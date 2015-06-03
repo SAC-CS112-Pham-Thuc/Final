@@ -1,0 +1,11 @@
+
+public class Dice {
+private int cardValue;
+	
+	public int Throw ()
+	{
+		cardValue = ((1 + (int)( Math.random()* 11)));
+		 return cardValue;
+	}
+	
+}
