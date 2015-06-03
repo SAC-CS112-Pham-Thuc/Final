@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+
+public class BlackJack {
+	
+	
+	public static void main(String[] args) 
+	{
+		
+		String question;
+		int playerfinalHand;
+		
+		Scanner read = new Scanner(System.in);
+		
+		Hand playerHand = new Hand();
+		Hand dealerHand = new Hand();
+		Dice dice       = new Dice();
+		
+		int playerNewHand = playerHand.getHand();
+		int dealerNewHand = dealerHand.getHand();
+	
+		System.out.println("Dealer total: " + dealerNewHand);
+		System.out.println("Player total: " + playerNewHand);
+		
+		
+		do 
+		{
+			 dealerNewHand += dice.Throw();
+		} while (dealerNewHand < 16);
+
+		do 
+		{
+			int hit = 0;
+			int count = ++hit -1;
+			System.out.println("Player's card total with "+ count + " hit is "+ playerNewHand);
+			playerfinalHand = playerNewHand += dice.Throw();
+			System.out.println("Player's card total with "+ count + 1 + " hit is "+ playerNewHand);
+			System.out.println("Do you want to hit? ");
+			question = read.nextLine();
+		} while (question.equalsIgnoreCase("Y"));
+		
+		System.out.println("Dealer total: " + dealerNewHand);
+		System.out.println("Player total: " + playerfinalHand);
+		
+		if (dealerNewHand <= 21 && dealerNewHand > playerfinalHand )
+			System.out.println("Dealer Win!");
+		else if (dealerNewHand >= 21 && dealerNewHand < playerfinalHand )
+			System.out.println("Dealer Win!");
+		else if (dealerNewHand <= 16 && playerfinalHand > 21  && dealerNewHand < playerfinalHand )
+			System.out.println("Dealer Win!");
+		else if (dealerNewHand <= 21 && playerfinalHand > 21  && dealerNewHand < playerfinalHand )
+			System.out.println("Dealer Win!");
+		else if(playerfinalHand <= 21 && playerNewHand > dealerNewHand )
+			System.out.println("Player Win!");
+		else if (playerfinalHand >= 21 && playerNewHand < dealerNewHand )
+			System.out.println("Player Win!");
+	}
+	
+	
+}
