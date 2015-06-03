@@ -1,0 +1,17 @@
+
+public class Hand extends Dice{
+	private int hand = 0;
+	
+	public int getHand()
+	{
+		hand = super.Throw() + super.Throw();
+		return hand ;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return String.format("Card Value: " + getHand()  );
+		
+	}
+}
